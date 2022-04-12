@@ -1,4 +1,4 @@
-# Restaurant List
+# Restaurant List with CRUD function
 ![restaurantList.gif](./restaurantList.gif)
 <br>
 :sparkles: Record your favorite restaurant.  
@@ -30,10 +30,12 @@
   ```bash
   ==== App is running on http://localhost:3000 ====
   ==== mongodb connected! ====
-
   ```
 * Open the browser, and enter the URL `http://localhost:3000`
-* You can stop by `Ctrl + C`
+* You can stop on Terminal by
+  ```bash
+  Ctrl + C
+  ```
 
 ## Build with
 * Node.js @14.16.0
