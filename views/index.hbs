@@ -1,0 +1,58 @@
+<!-- search bar -->
+<div class="container search-bar">
+  <div class="search-bar-outer">
+    <div class="search-bar-inner">
+      <form action="/search">
+        <h4 class="mb-2">尋找餐廳：</h4>
+        <div class="input-group">
+          <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳名稱 or 餐廳類別..." aria-label="Restaurant Name..." value="{{keyword}}" aria-describedby="search-button">
+          <div class="input-group-append">
+            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{{#if restaurants}}
+<!-- restaurant list -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-10 col-12 mx-auto">
+      <div class="card-columns">
+        {{#each restaurants}}
+          <a href="./restaurants/{{this._id}}" class="text-secondary">
+            <div class="card mb-3">
+              <img class="card-img-top" src={{this.image}} alt={{this.name}}>
+              <div class="card-body p-3">
+                <h6 class="card-title mb-1">{{this.name}}</h6>
+
+                <div class="restaurant-category mb-1">
+                  <i class="fas fa-utensils"></i> {{this.category}}
+                </div>
+
+                <span class="badge badge-pill badge-danger font-weight-normal">
+                  {{this.rating}}
+                  <i class="fas fa-star"></i>
+                </span>
+
+              </div>
+              <div class="card-footer d-flex justify-content-end" style="padding: 5px 5px;">
+                <a class="btn btn-primary btn-sm mr-1" href="./restaurants/{{ this._id }}">詳細資訊</a>
+                <a class="btn btn-success btn-sm mr-1" href="./restaurants/{{ this._id }}/edit">編輯</a>
+                <a class="btn btn-danger btn-sm" href="./restaurants/{{ this._id }}/delete">刪除</a>
+              </div>
+            </div>
+          </a>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{else}}
+<div class="container mt-5">
+  <h1 class="no-search-result">未找到與 {{keyword}} 相關結果</h1>
+</div>
+{{/if}}
