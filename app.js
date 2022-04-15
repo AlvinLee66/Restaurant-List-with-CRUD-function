@@ -5,9 +5,11 @@ const port = 3000
 const Restaurant = require('./models/restaurant')
 const bodyParser = require('body-parser')
 const provideDefaultInfo = require('./provideDefaultInfo')
+const methodOverride = require('method-override')
 
 const mongoose = require('mongoose')
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true}) // set connect to mongoDB
+mongoose.set('useFindAndModify', false)
 
 const db = mongoose.connection // get mongoose connection status
 
@@ -26,6 +28,7 @@ app.set('view engine', 'hbs')
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
+app.use(methodOverride('_method'))
 
 // set home page
 app.get('/', (req, res) => {
@@ -84,28 +87,11 @@ app.get('/restaurants/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.post('/restaurants/:id/edit', (req, res) => {
+app.put('/restaurants/:id', (req, res) => {
   const id = req.params.id
-  const name = req.body.name
-  const nameEn = req.body.nameEn
-  const category = req.body.category
-  const image = req.body.image
-  const location = req.body.location
-  const phone = req.body.phone
-  const rating = req.body.rating
-  const description = req.body.description
-  return Restaurant.findById(id)
-    .then(restaurant => {
-      restaurant.name = name
-      restaurant.nameEn = nameEn
-      restaurant.category = category
-      restaurant.image = image
-      restaurant.location = location
-      restaurant.phone = phone
-      restaurant.rating = rating
-      restaurant.description = description
-      return restaurant.save()
-    })
+  const newRestaurantInfo = req.body
+
+  return Restaurant.findByIdAndUpdate(id, newRestaurantInfo)
     .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => console.log(error))
 })
@@ -118,7 +104,7 @@ app.get('/restaurants/:id/delete', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.post('/restaurants/:id/delete', (req, res) => {
+app.delete('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .then(restaurant => restaurant.remove())

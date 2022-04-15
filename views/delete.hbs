@@ -3,7 +3,7 @@
     <div class="card-body p-3">
       <h4 class="card-title mb-1">確定要將『 {{ restaurant.name }} 』這筆餐廳資訊刪除嗎?</h4>
       <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-        <form action="/restaurants/{{ restaurant._id }}/delete" method="POST" style="display: inline;">
+        <form action="/restaurants/{{ restaurant._id }}?_method=DELETE" method="POST" style="display: inline;">
           <button class="btn btn-danger btn-sm mr-2" type="submit">確定</button>
         </form>
         <a class="btn btn-primary btn-sm" role="button" href="/">取消</a>

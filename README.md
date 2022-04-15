@@ -1,4 +1,4 @@
-# Restaurant List
+# Restaurant List with CRUD function
 ![restaurantList.gif](./restaurantList.gif)
 <br>
 :sparkles: Record your favorite restaurant.  
