@@ -6,21 +6,7 @@ const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const routes = require('./routes')
 
-const mongoose = require('mongoose')
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true}) // set connect to mongoDB
-mongoose.set('useFindAndModify', false)
-
-const db = mongoose.connection // get mongoose connection status
-
-// connect error
-db.on('error', () => {
-  console.log('==== mongodb error ====!')
-})
-
-// connect success
-db.once('open', () => {
-  console.log('==== mongodb connected! ====')
-})
+require('./config/mongoose')
 
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
