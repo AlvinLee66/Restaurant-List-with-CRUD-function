@@ -7,119 +7,132 @@
           <h5 class="card-title">編輯餐廳資訊</h5>
           <small class="text-muted form-text">＊為必填欄位</small>
           <hr>
-          <form method="POST" action="/restaurants/{{ restaurant._id }}?_method=PUT" method="POST">
-          {{else}}
-          <h5 class="card-title">新增餐廳資訊</h5>
-          <small class="text-muted form-text">＊為必填欄位</small>
-          <hr>
-          <form method="POST" action="/restaurants">
-          {{/if}}
-            <div class="row mb-3 g-2">
-              <label for="name" class="col-md-4">
-                餐廳名稱＊:
-              </label>
-              <div class="col-md-8">
-                <input type="text" placeholder="例如:好好吃餐廳" name="name" id="name" style="width: 390px;" required {{#if restaurant}} value="{{restaurant.name}}" {{/if}}>
-                <small class="text-muted form-text">請輸入餐廳名稱...</small>
-                <div class="invalid-feedback">此為必填欄位</div>
+          <form action="/restaurants/{{ restaurant._id }}?_method=PUT" method="POST">
+            {{else}}
+            <h5 class="card-title">新增餐廳資訊</h5>
+            <small class="text-muted form-text">＊為必填欄位</small>
+            <hr>
+            <form action="/restaurants" method="POST">
+              {{/if}}
+              <div class="row mb-3 g-2">
+                <label for="name" class="col-md-4">
+                  餐廳名稱＊:
+                </label>
+                <div class="col-md-8">
+                  <input type="text" placeholder="例如:好好吃餐廳" name="name" id="name" style="width: 390px;" required {{#if
+                    restaurant}} value="{{restaurant.name}}" {{/if}}>
+                  <br>
+                  <small class="text-muted form-text">請輸入餐廳名稱...</small>
+                  <div class="invalid-feedback">此為必填欄位</div>
+                </div>
               </div>
-            </div>
-            
-            <div class="row mb-3 g-2">
-              <label for="name-en" class="col-md-4">
-                Restaurant Name:
-              </label>
-              <div class="col-md-8">
-                <input type="text" placeholder="e.g.How How Eat" name="name_en" id="name-en" style="width: 390px;"
-                {{#if restaurant}} value="{{restaurant.name_en}}" {{/if}}>
-                <small class="text-muted form-text">Enter Restaurant Name...</small>
-              </div>
-            </div>
 
-            <div class="row mb-3 g-2">
-              <label for="category" class="col-md-4">
-                類別＊:
-              </label>
-              <div class="col-md-8">
-                <input type="text" list="categorys" placeholder="例如:中式餐廳、美式餐廳 或 義式餐廳" name="category" id="category" style="width: 390px;" required {{#if restaurant}} value="{{restaurant.category}}" {{/if}}>
-                <datalist id="categorys">
-                  <option>中式餐廳</option>
-                  <option>美式餐廳</option>
-                  <option>義式餐廳</option>
-                  <option>日本料理</option>
-                  <option>中東料理</option>
-                  <option>咖啡廳</option>
-                  <option>酒吧</option>
-                </datalist>
-                <small class="text-muted form-text">請選擇類別 或 自行輸入...</small>
+              <div class="row mb-3 g-2">
+                <label for="name-en" class="col-md-4">
+                  Restaurant Name:
+                </label>
+                <div class="col-md-8">
+                  <input type="text" placeholder="e.g.How How Eat" name="name_en" id="name-en" style="width: 390px;"
+                    {{#if restaurant}} value="{{restaurant.name_en}}" {{/if}}>
+                  <br>
+                  <small class="text-muted form-text">Enter Restaurant Name...</small>
+                </div>
               </div>
-            </div>
 
-            <div class="row mb-3 g-2">
-              <label for="image" class="col-md-4">
-                餐廳圖片:
-              </label>
-              <div class="col-md-8">
-                <input type="text" placeholder="例如:https://assets-lighthouse.s3.amazonaws.com/01.jpg" name="image" id="image" style="width: 390px;" {{#if restaurant}} value="{{restaurant.image}}" {{/if}}>
-                <small class="text-muted form-text">如果有餐廳圖片，可貼上連結網址。</small>
+              <div class="row mb-3 g-2">
+                <label for="category" class="col-md-4">
+                  類別＊:
+                </label>
+                <div class="col-md-8">
+                  <input type="text" list="categorys" placeholder="例如:中式餐廳、美式餐廳 或 義式餐廳" name="category" id="category"
+                    style="width: 390px;" required {{#if restaurant}} value="{{restaurant.category}}" {{/if}}>
+                  <datalist id="categorys">
+                    <option>中式餐廳</option>
+                    <option>美式餐廳</option>
+                    <option>義式餐廳</option>
+                    <option>日本料理</option>
+                    <option>中東料理</option>
+                    <option>咖啡廳</option>
+                    <option>酒吧</option>
+                  </datalist>
+                  <br>
+                  <small class="text-muted form-text">請選擇類別 或 自行輸入...</small>
+                </div>
               </div>
-            </div>
 
-            <div class="row mb-3 g-2">
-              <label for="location" class="col-md-4">
-                餐廳位置＊:
-              </label>
-              <div class="col-md-8">
-                <input type="text" placeholder="例如:台北市中山區林森北路 107 巷 8 號" name="location" id="location" style="width: 390px;" required {{#if restaurant}} value="{{restaurant.location}}" {{/if}}>
-                <small class="text-muted form-text">請輸入餐廳地址...</small>
+              <div class="row mb-3 g-2">
+                <label for="image" class="col-md-4">
+                  餐廳圖片:
+                </label>
+                <div class="col-md-8">
+                  <input type="text" placeholder="例如:https://assets-lighthouse.s3.amazonaws.com/01.jpg" name="image"
+                    id="image" style="width: 390px;" {{#if restaurant}} value="{{restaurant.image}}" {{/if}}>
+                  <br>
+                  <small class="text-muted form-text">如果有餐廳圖片，可貼上連結網址。</small>
+                </div>
               </div>
-            </div>
 
-            <div class="row mb-3 g-2">
-              <label for="phone" class="col-md-4">
-                餐廳電話:
-              </label>
-              <div class="col-md-8">
-                <input type="text" placeholder="例如:02 2363 8009" name="phone" id="phone" style="width: 390px;"
-                {{#if restaurant}} value="{{restaurant.phone}}" {{/if}}>
-                <small class="text-muted form-text">可輸入餐廳電話...</small>
+              <div class="row mb-3 g-2">
+                <label for="location" class="col-md-4">
+                  餐廳位置＊:
+                </label>
+                <div class="col-md-8">
+                  <input type="text" placeholder="例如:台北市中山區林森北路 107 巷 8 號" name="location" id="location"
+                    style="width: 390px;" required {{#if restaurant}} value="{{restaurant.location}}" {{/if}}>
+                  <br>
+                  <small class="text-muted form-text">請輸入餐廳地址...</small>
+                </div>
               </div>
-            </div>
 
-            <div class="row mb-3 g-2">
-              <label for="rating" class="col-md-4">
-                整體評分:
-              </label>
-              <div class="col-md-8">
-                <input type="text" placeholder="例如:4.3" name="rating" id="rating" style="width: 390px;"
-                {{#if restaurant}} value="{{restaurant.rating}}" {{/if}}>
-                <small class="text-muted form-text">可輸入整體評分...</small>
+              <div class="row mb-3 g-2">
+                <label for="phone" class="col-md-4">
+                  餐廳電話:
+                </label>
+                <div class="col-md-8">
+                  <input type="text" placeholder="例如:02 2363 8009" name="phone" id="phone" style="width: 390px;" {{#if
+                    restaurant}} value="{{restaurant.phone}}" {{/if}}>
+                  <br>
+                  <small class="text-muted form-text">可輸入餐廳電話...</small>
+                </div>
               </div>
-            </div>
 
-            <div class="row mb-3 g-2">
-              <label for="description" class="col-md-4">
-                餐廳描述:
-              </label>
-              <div class="col-md-8">
-                <textarea rows="5" cols="40" placeholder="這是一間美式餐廳，可容納約 20 人..." id="description" name="description">{{#if restaurant}}{{restaurant.description}}{{/if}}</textarea>
-                <small class="text-muted form-text">可輸入餐廳描述...</small>
+              <div class="row mb-3 g-2">
+                <label for="rating" class="col-md-4">
+                  整體評分:
+                </label>
+                <div class="col-md-8">
+                  <input type="text" placeholder="例如:4.3" name="rating" id="rating" style="width: 390px;" {{#if
+                    restaurant}} value="{{restaurant.rating}}" {{/if}}>
+                  <br>
+                  <small class="text-muted form-text">可輸入整體評分...</small>
+                </div>
               </div>
-            </div>
 
-            {{#if restaurant}}
+              <div class="row mb-3 g-2">
+                <label for="description" class="col-md-4">
+                  餐廳描述:
+                </label>
+                <div class="col-md-8">
+                  <textarea rows="5" cols="40" placeholder="這是一間美式餐廳，可容納約 20 人..." id="description"
+                    name="description">{{#if restaurant}}{{restaurant.description}}{{/if}}</textarea>
+                  <br>
+                  <small class="text-muted form-text">可輸入餐廳描述...</small>
+                </div>
+              </div>
+
+              {{#if restaurant}}
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button id="submitButton" class="btn btn-success mr-2" type="submit">儲存</button>
+                <button id="submitButton" class="btn btn-success" type="submit">儲存</button>
                 <a class="btn btn-secondary" role="button" href="/restaurants/{{ restaurant._id }}">取消</a>
               </div>
-            {{else}}
+              {{else}}
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button id="submitButton" class="btn btn-success mr-2" type="submit">新增</button>
+                <button id="submitButton" class="btn btn-success" type="submit">新增</button>
                 <a class="btn btn-secondary" role="button" href="/">取消</a>
               </div>
-            {{/if}}
-                      
-          </form>
+              {{/if}}
+
+            </form>
         </div>
       </div>
     </div>

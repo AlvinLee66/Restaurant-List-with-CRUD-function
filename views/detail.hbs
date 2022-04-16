@@ -1,8 +1,8 @@
 <h1 class="mb-1 restaurant-show-title">{{restaurant.name}}</h1>
 <div class="container">
-  <div class="d-flex justify-content-end">
-    <a class="btn btn-success btn-sm mr-2" role="button" href="/restaurants/{{ restaurant._id }}/edit">編輯</a>
-    <a class="btn btn-danger btn-sm mr-2" role="button" href="/restaurants/{{ restaurant._id }}/delete">刪除</a>
+  <div class="d-grid gap-2 d-flex justify-content-end">
+    <a class="btn btn-success btn-sm" role="button" href="/restaurants/{{ restaurant._id }}/edit">編輯</a>
+    <a class="btn btn-danger btn-sm" role="button" href="/restaurants/{{ restaurant._id }}/delete">刪除</a>
     <a class="btn btn-primary btn-sm" role="button" href="/">返回</a>
   </div>
   <div class="row">
@@ -32,6 +32,15 @@
         {{restaurant.phone}}
       </p>
 
+      <p class="mb-1">
+        <span class="text-secondary">
+          <i class="fas fa-star"></i>
+          評分：
+        </span>
+        {{restaurant.rating}}
+      </p>
+
+      <hr>
       <p class="mb-5">
         {{restaurant.description}}
       </p>
