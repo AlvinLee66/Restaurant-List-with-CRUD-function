@@ -3,7 +3,7 @@
 <br>
 :sparkles: Record your favorite restaurant.  
 
-## Features  
+## Features
 * Shows all restaurants on homepage.  
 * Click image or 詳細資訊 for detailed info on restaurant.  
 * You can find the specific restaurant by searching keyword(restaurant name or category).
