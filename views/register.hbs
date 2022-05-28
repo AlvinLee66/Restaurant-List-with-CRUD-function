@@ -2,16 +2,16 @@
   <div class="col-md-6 m-auto">
     <div class="card card-body">
       <h1 class="text-center mt-2">Register</h1>
-      <form action="/users/login" method="POST">
+      <form action="/users/register" method="POST">
         <div class="d-grid gap-2 col-md-10 mx-auto">
           <label for="name">Name</label>
-          <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name">
+          <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name" value="{{ name }}">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email">
+          <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email" value="{{ email }}">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password">
+          <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" value="{{ password }}">
           <label for="confirmPassword">Confirm Password</label>
-          <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Enter Your Password Again">
+          <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Enter Your Password Again" value="{{ confirmPassword }}">
         </div>
         <div class="d-grid gap-2 col-10 mt-3 mx-auto">
           <button class="btn btn-primary" type="submit">Register</button>
