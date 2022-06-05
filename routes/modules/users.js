@@ -5,12 +5,19 @@ const router = express.Router()
 const User = require('../../models/user')
 
 router.get('/login', (req, res) => {
-  res.render('login')
+  const errorMessage = req.flash('error')
+  const errors = []
+  
+  if (errorMessage.length) {
+    errors.push({ message: errorMessage[0] })
+  }
+  res.render('login', { errors })
 })
 
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/users/login'
+  failureRedirect: '/users/login',
+  failureFlash: true
 }))
 
 router.get('/register', (req, res) => {
@@ -27,7 +34,7 @@ router.post('/register', (req, res) => {
   if (password !== confirmPassword) {
     errors.push({ message: '密碼與確認密碼不相符！' })
   }
- 
+
   User.findOne({ email })
     .then(user => {
       if (user) {
