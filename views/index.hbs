@@ -70,7 +70,13 @@
 </div>
 
 {{else}}
-<div class="container mt-5">
-  <h1 class="no-search-result">未找到與 {{keyword}} 相關結果</h1>
-</div>
+  {{#if keyword}}
+  <div class="container mt-5">
+    <h2 class="no-search-result">未找到與 {{keyword}} 相關的結果！</h2>
+  </div>
+  {{else}}
+  <div class="container mt-5">
+    <h2 class="no-search-result">資料庫是空的，請點選「新增餐廳」<br>來建立餐廳資訊~</h2>
+  </div>
+  {{/if}}
 {{/if}}
