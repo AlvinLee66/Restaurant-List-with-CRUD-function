@@ -1,8 +1,7 @@
 const express = require('express')
-const restaurant = require('../../models/restaurant')
 const router = express.Router()
 const Restaurant = require('../../models/restaurant')
-const provideDefaultInfo = require('../../provideDefaultInfo')
+const provideDefaultInfo = require('../../untis/provideDefaultInfo')
 
 router.get('/new', (req, res) => {
   return res.render('new')

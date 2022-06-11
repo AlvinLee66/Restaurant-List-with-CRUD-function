@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Restaurant = require('../../models/restaurant')
-const sortByWay = require('../../sortByWay')
+const sortByWay = require('../../untis/sortByWay')
 
 // set home page
 router.get('/', (req, res) => {
